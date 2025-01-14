@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 
 export default function Chatbot() {
@@ -5,6 +6,12 @@ export default function Chatbot() {
   const [value, setValue] = useState<string>("");
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setValue(e.target.value);
+  const handleSubmit = async () => {
+    const response = await axios.post("http://localhost:3005/chatbot", {
+      question: value,
+    });
+    setResponse(response.data);
+  };
   return (
     <div>
       <div className="container">
@@ -12,7 +19,7 @@ export default function Chatbot() {
           <input type="text" value={value} onChange={onChange}></input>
         </div>
         <div>
-          <button>Send</button>
+          <button onClick={handleSubmit}>Send</button>
         </div>
         <div>
           <p>Chatbot:{response}</p>
