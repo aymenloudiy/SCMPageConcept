@@ -1,5 +1,5 @@
 import { LineChart } from "@mui/x-charts/LineChart";
-export default function Linechart() {
+export default function LineChartContainer() {
   return (
     <div>
       <LineChart
