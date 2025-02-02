@@ -1,7 +1,12 @@
 import "./App.css";
+import ChatContainer from "./components/ChatContainer";
 
 function App() {
-  return <></>;
+  return (
+    <>
+      <ChatContainer></ChatContainer>
+    </>
+  );
 }
 
 export default App;
