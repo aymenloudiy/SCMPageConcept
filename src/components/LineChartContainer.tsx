@@ -1,7 +1,7 @@
 import { LineChart } from "@mui/x-charts/LineChart";
 export default function LineChartContainer() {
   return (
-    <div>
+    <div className="col-span-9">
       <LineChart
         xAxis={[{ data: [1, 2, 3, 5, 8, 10] }]}
         series={[
