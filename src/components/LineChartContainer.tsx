@@ -25,10 +25,13 @@ export default function LineChartContainer() {
         series={[
           {
             data: [2, 5.5, 2, 8.5, 1.5, 5],
-            area: true,
+            area: false,
+            color: grey[100],
           },
         ]}
         sx={{
+          backgroundColor: "transparent",
+          "& .MuiChartsBackground-root": { fill: "transparent" },
           "& .MuiChartsLegend-root": { color: grey[100] },
         }}
       />
