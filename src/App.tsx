@@ -1,10 +1,10 @@
 import "./App.css";
-import ChatContainer from "./components/ChatContainer";
+import MainContainer from "./components/MainContainer";
 
 function App() {
   return (
     <>
-      <ChatContainer></ChatContainer>
+      <MainContainer></MainContainer>
     </>
   );
 }
