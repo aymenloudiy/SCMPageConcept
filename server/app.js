@@ -7,6 +7,9 @@ import messagesRoute from "./routes/messages.js";
 const app = express();
 const port = process.env.PORT || 8081;
 
+app.use(cors());
+app.use(express.json());
+
 app.use("/api/chatbot", chatbotRoute);
 app.use("/api/messages", messagesRoute);
 
@@ -16,15 +19,17 @@ app.get("/", (req, res) => {
 
 (async () => {
   try {
-    await sequelize.sync();
+    await sequelize.authenticate();
+    await sequelize.sync({ alter: true });
+
     console.log("Database synced!");
-    app.listen(port, () => console.log(`Server running on port ${port}`));
+    app.listen(port, () => console.log(`🚀 Server running on port ${port}`));
   } catch (error) {
     console.error("Unable to start server:", error);
   }
 })();
 
-process.on("SIGINT", async () => {
+const gracefulShutdown = async () => {
   console.log("Shutting down server...");
   try {
     await sequelize.close();
@@ -34,4 +39,7 @@ process.on("SIGINT", async () => {
     console.error("Error closing database connection:", error);
     process.exit(1);
   }
-});
+};
+
+process.on("SIGINT", gracefulShutdown);
+process.on("SIGTERM", gracefulShutdown);
