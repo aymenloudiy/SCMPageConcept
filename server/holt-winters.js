@@ -1,13 +1,16 @@
-import { holtWinters } from "forecasting";
+import forecast from "nostradamus";
 
-const salesData = [100, 120, 130, 150, 170, 160, 180];
+var data = [
+  362, 385, 432, 341, 382, 409, 498, 387, 473, 513, 582, 474, 544, 582, 681,
+  557, 628, 707, 773, 592, 627, 725, 854, 661,
+];
 
-const model = holtWinters(salesData, {
-  alpha: 0.2,
-  beta: 0.1,
-  gamma: 0.2,
-  period: 12,
-  forecast: 3,
-});
+var alpha = 0.5; // Overall smoothing
+var beta = 0.4; // Trend smoothing
+var gamma = 0.6; // Seasonal smoothing
+var period = 4; // Observations per season
+var m = 4; // Future periods to forecast
 
-console.log("Predicted next months:", model);
+var predictions = forecast(data, alpha, beta, gamma, period, m);
+
+console.log(predictions);
