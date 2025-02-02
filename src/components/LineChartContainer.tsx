@@ -10,8 +10,6 @@ export default function LineChartContainer() {
             area: true,
           },
         ]}
-        width={500}
-        height={300}
       />
     </div>
   );
