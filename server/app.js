@@ -1,9 +1,10 @@
 import express from "express";
 import cors from "cors";
-import { sequelize } from "./database.js";
+import { sequelize, connectDB } from "./database.js";
 import chatbotRoute from "./routes/chatbot.js";
 import messagesRoute from "./routes/messages.js";
-console.log(sequelize);
+
+connectDB();
 
 const app = express();
 const port = process.env.PORT || 8081;
