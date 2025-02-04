@@ -1,5 +1,5 @@
 import express from "express";
-import { ChatMessage } from "../models/index.js";
+import { ChatMessage } from "../models/schema.js";
 import OpenAI from "openai";
 
 const router = express.Router();
