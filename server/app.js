@@ -1,10 +1,8 @@
 import express from "express";
 import cors from "cors";
-import { sequelize, connectDB } from "./database.js";
+import { connectDB } from "./database.js";
 import chatbotRoute from "./routes/chatbot.js";
 import messagesRoute from "./routes/messages.js";
-
-connectDB();
 
 const app = express();
 const port = process.env.PORT || 8081;
@@ -22,10 +20,7 @@ app.get("/", (req, res) => {
 let server;
 (async () => {
   try {
-    await sequelize.authenticate();
-    await sequelize.sync({ alter: true });
-
-    console.log("Database connected & synced!");
+    await connectDB();
     server = app.listen(port, () =>
       console.log(`Server running on port ${port}`)
     );
@@ -36,7 +31,7 @@ let server;
 })();
 
 const gracefulShutdown = async () => {
-  console.log("Shutting down server...");
+  console.log("\n Shutting down server...");
   try {
     if (server) {
       server.close(() => console.log("Express server closed."));
