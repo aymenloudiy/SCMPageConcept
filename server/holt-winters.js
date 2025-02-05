@@ -5,11 +5,11 @@ var data = [
   557, 628, 707, 773, 592, 627, 725, 854, 661,
 ];
 
-var alpha = 0.5; // Overall smoothing
-var beta = 0.4; // Trend smoothing
-var gamma = 0.6; // Seasonal smoothing
-var period = 4; // Observations per season
-var m = 4; // Future periods to forecast
+var alpha = 0.5;
+var beta = 0.4;
+var gamma = 0.6;
+var period = 4;
+var m = 4;
 
 var predictions = forecast(data, alpha, beta, gamma, period, m);
 
